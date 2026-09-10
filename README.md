@@ -1,4 +1,4 @@
-# Greenwood International School
+# BR Agrawal Hindi High School
 
 A school website that runs locally in the browser. No database or backend required.
 
