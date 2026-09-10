@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      String
+  name      String
+  createdAt DateTime @default(now())
+  student   Student?
+  teacher   Teacher?
+}
+
+model Class {
+  id        String      @id @default(cuid())
+  name      String
+  section   String
+  grade     Int
+  students  Student[]
+  timetable Timetable[]
+}
+
+model Student {
+  id         String       @id @default(cuid())
+  userId     String       @unique
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  classId    String
+  class      Class        @relation(fields: [classId], references: [id])
+  rollNumber String
+  parentName String
+  phone      String
+  dob        String
+  address    String
+  gender     String
+  attendance Attendance[]
+  results    Result[]
+}
+
+model Teacher {
+  id            String      @id @default(cuid())
+  userId        String      @unique
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subject       String
+  qualification String
+  experience    Int
+  bio           String
+  photo         String
+  phone         String
+  timetable     Timetable[]
+}
+
+model Timetable {
+  id        String  @id @default(cuid())
+  classId   String
+  class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+  teacherId String
+  teacher   Teacher @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  day       String
+  period    Int
+  subject   String
+  startTime String
+  endTime   String
+}
+
+model Attendance {
+  id        String  @id @default(cuid())
+  studentId String
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  date      String
+  status    String
+  markedBy  String
+}
+
+model Result {
+  id        String  @id @default(cuid())
+  studentId String
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  subject   String
+  examType  String
+  marks     Float
+  maxMarks  Float
+  grade     String
+  term      String
+}
+
+model Notice {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  category  String
+  date      DateTime @default(now())
+  pinned    Boolean  @default(false)
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  date        DateTime
+  venue       String
+  image       String
+}
+
+model Admission {
+  id             String   @id @default(cuid())
+  studentName    String
+  parentName     String
+  email          String
+  phone          String
+  applyingFor    String
+  previousSchool String
+  message        String
+  status         String   @default("PENDING")
+  createdAt      DateTime @default(now())
+}
+
+model Gallery {
+  id       String @id @default(cuid())
+  title    String
+  imageUrl String
+  category String
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+}
