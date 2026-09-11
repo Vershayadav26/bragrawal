@@ -5,15 +5,15 @@ import Button from '../components/common/Button'
 import { useAuth } from '../context/AuthContext'
 
 const demos = [
-  { role: 'Admin', email: 'admin@greenwood.edu', password: 'Admin@123' },
-  { role: 'Teacher', email: 'teacher@greenwood.edu', password: 'Teacher@123' },
-  { role: 'Student', email: 'student@greenwood.edu', password: 'Student@123' },
+  { role: 'Admin', email: 'admin@bragrawal.edu', password: 'Admin@123' },
+  { role: 'Teacher', email: 'teacher@bragrawal.edu', password: 'Teacher@123' },
+  { role: 'Student', email: 'student@bragrawal.edu', password: 'Student@123' },
 ]
 
 export default function Login() {
   const { login } = useAuth()
   const navigate = useNavigate()
-  const [email, setEmail] = useState('admin@greenwood.edu')
+  const [email, setEmail] = useState('admin@bragrawal.edu')
   const [password, setPassword] = useState('Admin@123')
   const [saving, setSaving] = useState(false)
 
@@ -36,7 +36,7 @@ export default function Login() {
     <section className="container-site grid min-h-[70vh] items-center gap-10 py-16 lg:grid-cols-2">
       <div>
         <p className="text-sm font-semibold uppercase tracking-wide text-secondary">Portal</p>
-        <h1 className="mt-2 font-heading text-4xl font-bold text-ink">Sign in to Greenwood.</h1>
+        <h1 className="mt-2 font-heading text-4xl font-bold text-ink">Sign in to bragrawal.</h1>
         <p className="mt-3 text-slate-600">Students, teachers and the office use the same login. Access depends on your role.</p>
         <div className="mt-8 space-y-2 text-sm">
           {demos.map((d) => (
