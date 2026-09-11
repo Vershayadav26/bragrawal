@@ -22,6 +22,6 @@ Then open **http://localhost:5173**
 
 | Role    | Email                   | Password    |
 |---------|-------------------------|-------------|
-| Admin   | admin@greenwood.edu     | Admin@123   |
-| Teacher | teacher@greenwood.edu   | Teacher@123 |
-| Student | student@greenwood.edu   | Student@123 |
+| Admin   | admin@bragrawal.edu     | Admin@123   |
+| Teacher | teacher@bragrawal.edu   | Teacher@123 |
+| Student | student@bragrawal.edu   | Student@123 |
